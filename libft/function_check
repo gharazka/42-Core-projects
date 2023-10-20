@@ -1,0 +1,46 @@
+isalpha +
+isdigit +
+isalnum +
+isascii +
+isprint +
+strlen +
+memset X
+bzero X
+memcpy X
+memmove X
+strlcpy X
+strlcat X
+toupper +
+tolower +
+strchr +
+strrchr +
+strncmp +
+memchr X
+memcmp X
+strnstr X
+atoi NORM
+calloc X
+strdup X
+
+substr +
+strjoin +
+strtrim X
+split +
+itoa X
+strmapi X
+striteri X
+putchar_fd +
+putstr_fd +
+putendl_fd +
+putnbr_fd +
+
+lstnew X
+lstadd_front X
+lstsize X
+lstlast X
+lstadd_back X
+lstdelone X
+lstclear X
+lstiter X
+lstmap X
+
