@@ -4,8 +4,8 @@ isalnum +
 isascii +
 isprint +
 strlen +
-memset X
-bzero X
+memset +
+bzero +
 memcpy X
 memmove X
 strlcpy X
@@ -15,20 +15,20 @@ tolower +
 strchr +
 strrchr +
 strncmp +
-memchr X
+memchr MAIN
 memcmp X
-strnstr X
+strnstr +
 atoi NORM
 calloc X
-strdup X
+strdup +
 
 substr +
 strjoin +
-strtrim X
+strtrim +
 split +
 itoa X
-strmapi X
-striteri X
+strmapi +
+striteri +
 putchar_fd +
 putstr_fd +
 putendl_fd +
@@ -43,4 +43,3 @@ lstdelone X
 lstclear X
 lstiter X
 lstmap X
-

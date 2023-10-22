@@ -15,6 +15,18 @@
 #include <ctype.h>
 #include <string.h>
 
+char    test(unsigned int i, char c)
+{
+        c += i;
+	return c;
+}
+
+void    test2(unsigned int i, char *c)
+{
+        *c += i;
+}
+
+
 int	main(void)
 {
 	printf("ft_isalpha\n");
@@ -128,5 +140,45 @@ int	main(void)
 	printf("expected result: HaBa, got: %s\n", ft_substr("HaBa", 0, 4));
 	printf("expected result: , got: %s\n", ft_substr("abcd", 4, 0));
 	printf("expected result: D E F, got: %s\n", ft_substr("A B C D E F G", 6, 5));
-	
+	printf("ft_strmapi\n");
+	printf("expected result: ACEG, got: %s\n", ft_strmapi("ABCD", test));
+	printf("expected result: 1357, got: %s\n", ft_strmapi("1234", test));
+	printf("expected result: aceg, got: %s\n", ft_strmapi("abcd", test));	
+	printf("ft_striteri\n");
+	char	a[5] = "ABCD";
+	char	b[5] = "1234";
+	char	c[5] = "abcd";
+	ft_striteri(a, test2);
+	ft_striteri(b, test2);
+	ft_striteri(c, test2);
+	printf("expected result: ACEG, got: %s\n", a);
+	printf("expected result: 1357, got: %s\n", b);
+	printf("expected result: aceg, got: %s\n", c);
+	printf("ft_strnstr\n");
+	printf("expected result: 12, got: %s\n", ft_strnstr("Hh Bh Bb 12", "12", 20));
+	printf("expected result: 12, got: %s\n", strstr("Hh Bh Bb 12", "12"));
+	printf("expected result: , got: %s\n", ft_strnstr("", "", 3));
+	printf("expected result: , got: %s\n", strstr("", ""));
+	printf("expected result: AAAA, got: %s\n", ft_strnstr("AAAA", "", 7));
+	printf("expected result: AAAA, got: %s\n", strstr("AAAA", ""));
+	printf("ft_strtrim\n");
+	printf("expected result: ACEG, got: %s\n", ft_strtrim("AacCbEcaG", "abc"));
+	printf("expected result: 1234, got: %s\n", ft_strtrim("1 2 3 4 ", " "));
+	printf("expected result: stokrotka, got: %s\n", ft_strtrim("st8ok6r4ot2k1a", "0123456789"));	
+	printf("ft_strdup\n");
+	printf("expected result: ACEG, got: %s\n", ft_strdup("ACEG"));
+	printf("expected result: 1234, got: %s\n", ft_strdup("1234"));
+	printf("expected result: stokrotka, got: %s\n", ft_strdup("stokrotka"));
+	printf("ft_memset\n");
+	void	*check;
+	check = malloc(4);
+	check = ft_memset(check, '1', 4);
+	printf("expected result: 1111, got: %s\n", check);
+	check = ft_memset(check, 'a', 3);
+	printf("expected result: 1111, got: %s\n", check);
+	check = ft_memset(check, 'A', 2);
+	printf("expected result: llll, got: %s\n", check);
+	printf("ft_bzero\n");
+	check = ft_bzero(check, 1);
+	printf("expected result: , got: %s\n", check);
 }
