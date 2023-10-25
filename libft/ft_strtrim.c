@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/24 18:02:53 by gharazka          #+#    #+#             */
+/*   Updated: 2023/10/24 19:13:17 by gharazka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	check_set(char c, char const *set)
@@ -5,7 +17,7 @@ static int	check_set(char c, char const *set)
 	int	i;
 
 	i = 0;
-	while(set[i])
+	while (set[i])
 	{
 		if (c == set[i])
 			return (1);
@@ -14,40 +26,51 @@ static int	check_set(char c, char const *set)
 	return (0);
 }
 
-static int strlen_noset(char const *s1, char const *set)
+static int	start(char const *s1, char const *set)
 {
 	int	i;
-	int	len;
 
 	i = 0;
-	while(s1[i])
+	while (check_set(s1[i], set))
 	{
-		if (!(check_set(s1[i], set)))
-			len++;
 		i++;
+	}
+	return (i);
+}
+
+static int	end(char const *s1, char const *set)
+{
+	int	len;
+
+	len = ft_strlen(s1) - 1;
+	while (check_set(s1[len], set))
+	{
+		len--;
 	}
 	return (len);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	i;
-	int	j;
+	int		start_i;
+	int		end_i;
+	int		j;
 	char	*result;
 
-	result = (char *)malloc(sizeof(char) * (strlen_noset(s1, set) + 1));
+	start_i = start(s1, set);
+	end_i = end(s1, set);
+	if (start_i > end_i)
+		return (NULL);
+	result = (char *)malloc(sizeof(char) * (end_i - start_i + 2));
 	if (!result)
 		return (NULL);
-	i = 0;
 	j = 0;
-	while (s1[i])
+	while (start_i <= end_i)
 	{
-		if (!(check_set(s1[i], set)))
-		{
-			result[j] = s1[i];
-			j++;
-		}	
-		i++;
+		result[j] = s1[start_i];
+		j++;
+		start_i++;
 	}
+	result[j] = 0;
 	return (result);
 }

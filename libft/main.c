@@ -6,7 +6,7 @@
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 21:34:14 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/19 21:25:29 by gharazka         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:47:13 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ int	main(void)
 	printf("ft_strncmp\n");
 	printf("expected result: 0, got: %i\n", ft_strncmp("ABCDef", "ABCDEF", 4));
 	printf("expected result: 0, got: %i\n", strncmp("ABCDef", "ABCDEF", 4));
-	printf("expected result: -i, got: %i\n", ft_strncmp("", "A", 4));
-	printf("expected result: -i, got: %i\n", strncmp("", "A", 4));
+	printf("expected result: -i, got: %i\n", ft_strncmp("as\200", "as\0", 4));
+	printf("expected result: -i, got: %i\n", strncmp("as\200", "as\0", 4));
 	printf("ft_atoi\n");
 	printf("expected result: 42, got: %i\n", ft_atoi("42"));
 	printf("expected result: 42, got: %i\n", atoi("42"));
@@ -120,20 +120,18 @@ int	main(void)
 	printf("expected result: -2147483648, got: %i\n", atoi("-2147483648"));
 	printf("ft_split\n");
 	printf("expected result: Ha Ba, got: %s\n", ft_split("Ha Ba", ' ')[1]);
-	printf("expected result: , got: %s\n", ft_split("", ' ')[0]);
-	printf("expected result: A B C D E F G, got: %s\n", ft_split("A B C D E F G", ' ')[6]);
+	printf("expected result: , got: %s\n", ft_split("", ' '));
+	printf("expected result: A B C D E F G, got: %s\n", ft_split("A    B    C D E F G", ' ')[6]);
 	printf("ft_strchr\n");
 	printf("expected result: Ha Ba, got: %s\n", ft_strchr("Ha Ba", ' '));
 	printf("expected result: Ha Ba, got: %s\n", strchr("Ha Ba", ' '));
 	printf("expected result: , got: %s\n", ft_strchr("", ' '));
-	printf("expected result: , got: %s\n", strchr("", ' '));
 	printf("expected result: A B C D E F G, got: %s\n", ft_strchr("A B C D E F G", 'B'));
 	printf("expected result: A B C D E F G, got: %s\n", strchr("A B C D E F G", 'B'));
 	printf("ft_strrchr\n");
 	printf("expected result: h Bb, got: %s\n", ft_strrchr("Hh Bh Bb", 'h'));
 	printf("expected result: h Bb, got: %s\n", strrchr("Hh Bh Bb", 'h'));
 	printf("expected result: , got: %s\n", ft_strrchr("", ' '));
-	printf("expected result: , got: %s\n", strrchr("", ' '));
 	printf("expected result: B G, got: %s\n", ft_strrchr("A B C D E B G", 'B'));
 	printf("expected result: B G, got: %s\n", strrchr("A B C D E B G", 'B'));
 	printf("ft_substr\n");
@@ -162,8 +160,8 @@ int	main(void)
 	printf("expected result: AAAA, got: %s\n", ft_strnstr("AAAA", "", 7));
 	printf("expected result: AAAA, got: %s\n", strstr("AAAA", ""));
 	printf("ft_strtrim\n");
-	printf("expected result: ACEG, got: %s\n", ft_strtrim("AacCbEcaG", "abc"));
-	printf("expected result: 1234, got: %s\n", ft_strtrim("1 2 3 4 ", " "));
+	printf("expected result: orem ipsum dolor sit amet, got: %s\n", ft_strtrim("lorem ipsum dolor sit amet", "l"));
+	printf("expected result: 23, got: %s\n", ft_strtrim("12341", "14"));
 	printf("expected result: stokrotka, got: %s\n", ft_strtrim("st8ok6r4ot2k1a", "0123456789"));	
 	printf("ft_strdup\n");
 	printf("expected result: ACEG, got: %s\n", ft_strdup("ACEG"));
@@ -173,12 +171,17 @@ int	main(void)
 	void	*check;
 	check = malloc(4);
 	check = ft_memset(check, '1', 4);
-	printf("expected result: 1111, got: %s\n", check);
+	printf("expected result: 1111, got: %s\n",(char *) check);
 	check = ft_memset(check, 'a', 3);
-	printf("expected result: 1111, got: %s\n", check);
+	printf("expected result: aaa1, got: %s\n", (char *)check);
 	check = ft_memset(check, 'A', 2);
-	printf("expected result: llll, got: %s\n", check);
+	printf("expected result: AAa1, got: %s\n", (char *)check);
 	printf("ft_bzero\n");
 	check = ft_bzero(check, 1);
-	printf("expected result: , got: %s\n", check);
+	printf("expected result: , got: %s\n", (char *)check);
+	printf("ft_itoa\n");
+	printf("expected result: 42, got: %s\n", ft_itoa(42));
+	printf("expected result: 0, got: %s\n", ft_itoa(0));
+	printf("expected result: -2147483648, got: %s\n", ft_itoa(-2147483648));
+
 }

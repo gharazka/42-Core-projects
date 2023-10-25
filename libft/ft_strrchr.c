@@ -6,7 +6,7 @@
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:33:16 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/19 17:43:01 by gharazka         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:52:51 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ char	*ft_strrchr(const char *s, int c)
 			ptr_c = (char *)&s[i];
 		i++;
 	}
-	if (ptr_c)
+	if (s[i] == c)
+		ptr_c = (char *)&s[i];
+	if (ptr_c != NULL)
 		return (ptr_c);
 	else
 		return (0);

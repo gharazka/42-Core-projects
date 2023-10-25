@@ -6,7 +6,7 @@
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 14:23:34 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/19 21:41:49 by gharazka         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:21:47 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ static int	ft_issign(char c)
 	return (0);
 }
 
+int	abcd(const char *str, int result, int i)
+{
+	while ((str[i] != 0 && ft_isdigit(str[i])))
+	{
+		result += (str[i] - 48);
+		if (!(result > 1000000000 || result < -1000000000))
+			result *= 10;
+		i++;
+	}
+	return (result);
+}
+
 int	ft_atoi(const char *str)
 {
 	int	i;
@@ -39,24 +51,14 @@ int	ft_atoi(const char *str)
 	sign = 0;
 	while (str[i] != 0 && !ft_isdigit(str[i]))
 	{
-		if (!ft_isspace(str[i]) && !ft_issign(str[i]) && sign != 0)
+		if ((!ft_isspace(str[i]) && !ft_issign(str[i]))
+			|| (ft_issign(str[i]) && sign != 0))
 			return (0);
 		if (ft_issign(str[i]) != 0)
-		{
-			if (ft_issign(str[i]) == 1)
-				sign = 1;
-			if (ft_issign(str[i]) == -1)
-				sign = -1;
-		}
+			sign = ft_issign(str[i]);
 		i++;
 	}
-	while ((str[i] != 0 && ft_isdigit(str[i])))
-	{
-		result += (str[i] - 48);
-		if (!(result > 1000000000 || result < -1000000000))
-			result *= 10;
-		i++;
-	}
+	result = abcd(str, result, i);
 	if (result < 1000000000 && result > -1000000000)
 		result /= 10;
 	if (sign)
