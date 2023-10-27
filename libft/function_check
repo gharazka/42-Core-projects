@@ -6,8 +6,8 @@ isprint +
 strlen +
 memset +
 bzero +
-memcpy X
-memmove X
+memcpy +
+memmove FIX
 strlcpy +
 strlcat X
 toupper +

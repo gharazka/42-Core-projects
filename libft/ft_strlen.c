@@ -6,13 +6,13 @@
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 21:47:57 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/17 22:21:53 by gharazka         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:42:47 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_size	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 

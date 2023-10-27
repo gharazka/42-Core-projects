@@ -31,7 +31,7 @@ static int	start(char const *s1, char const *set)
 	int	i;
 
 	i = 0;
-	while (check_set(s1[i], set))
+	while (check_set(s1[i], set) && s1[i])
 	{
 		i++;
 	}
@@ -43,7 +43,7 @@ static int	end(char const *s1, char const *set)
 	int	len;
 
 	len = ft_strlen(s1) - 1;
-	while (check_set(s1[len], set))
+	while (check_set(s1[len], set) && s1[len])
 	{
 		len--;
 	}
@@ -56,11 +56,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		end_i;
 	int		j;
 	char	*result;
-
+	
 	start_i = start(s1, set);
 	end_i = end(s1, set);
 	if (start_i > end_i)
-		return (NULL);
+	{
+		result = malloc(1);
+		return (result);
+	}
 	result = (char *)malloc(sizeof(char) * (end_i - start_i + 2));
 	if (!result)
 		return (NULL);

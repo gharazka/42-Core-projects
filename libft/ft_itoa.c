@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/25 18:23:15 by gharazka          #+#    #+#             */
+/*   Updated: 2023/10/25 18:23:22 by gharazka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	numlen(int n)
@@ -20,8 +32,8 @@ static int	numlen(int n)
 char	*ft_itoa(int n)
 {
 	char	*num_str;
-	int	len;
-	int	sign;
+	int		len;
+	int		sign;
 
 	len = numlen(n);
 	sign = 1;

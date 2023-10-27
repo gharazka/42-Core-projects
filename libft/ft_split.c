@@ -6,7 +6,7 @@
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:28:36 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/24 19:04:33 by gharazka         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:06:45 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static int	count_words(char const *s, char c)
 			i++;
 		count++;
 	}
-	if (count == 0)
-		count++;
+	if (i > 0 && check_for_separated(s[i - 1], c))
+		count--;
 	return (count);
 }
 
@@ -77,9 +77,9 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	k = 0;
+	words = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
 	if (s[i] == 0)
-		return (NULL);
-	words = (char **)malloc(sizeof(char *) * count_words(s, c) + 1);
+		return (words);
 	if (!words)
 		return (NULL);
 	while (s[i])
@@ -94,6 +94,6 @@ char	**ft_split(char const *s, char c)
 		else
 			i++;
 	}
-	words[k] = 0;
+	words[k] = NULL;
 	return (words);
 }

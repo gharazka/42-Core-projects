@@ -6,7 +6,7 @@
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 21:34:14 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/24 18:47:13 by gharazka         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:26:56 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,10 @@ int	main(void)
 	printf("expected result: 42, got: %i\n", atoi("42"));
 	printf("expected result: -42, got: %i\n", ft_atoi("-42"));
 	printf("expected result: -42, got: %i\n", atoi("-42"));
-	printf("expected result: 1234, got: %i\n", ft_atoi("1234 1"));
-	printf("expected result: 1234, got: %i\n", atoi("1234 1"));
-	printf("expected result: 1, got: %i\n", ft_atoi("  \t \n  1"));
-	printf("expected result: 1, got: %i\n", atoi(" \t \n  1"));
+	printf("expected result: 0, got: %i\n", ft_atoi("+\n42"));
+	printf("expected result: 0, got: %i\n", atoi("+\n42"));
+	printf("expected result: 0, got: %i\n", ft_atoi("-\t42"));
+	printf("expected result: 0, got: %i\n", atoi("-\t42"));
 	printf("expected result: -2147483648, got: %i\n", ft_atoi("-2147483648"));
 	printf("expected result: -2147483648, got: %i\n", atoi("-2147483648"));
 	printf("ft_split\n");
@@ -183,5 +183,15 @@ int	main(void)
 	printf("expected result: 42, got: %s\n", ft_itoa(42));
 	printf("expected result: 0, got: %s\n", ft_itoa(0));
 	printf("expected result: -2147483648, got: %s\n", ft_itoa(-2147483648));
+	printf("ft_memmove\n");
+	char	src[] = "Lorem ipsum dolor sit amet";
+	char	*dest = src + 1;
+	printf("%s\n", dest);
+	printf("expected result: 12, got: %s\n", ft_memmove(dest, src, 0));
+	printf("ft_strlcat\n");
+	char	*dst = (char *)malloc(15);
+	ft_memset(dst, 'r', 14);
+	printf("expected result: 32, got: %i\n", ft_strlcat(dst, "lorem ipsum dolor sit amet", 15));
+	printf("expected result: 40, got: %i\n", ft_strlcat(dst, "lorem ipsum dolor sit amet", 15));
 
 }
