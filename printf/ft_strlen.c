@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 20:22:29 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/28 20:22:30 by gharazka         ###   ########.fr       */
+/*   Created: 2023/10/17 21:47:57 by gharazka          #+#    #+#             */
+/*   Updated: 2023/10/25 18:42:47 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_strlen(const char *str)
 {
-	if (lst == NULL)
-	{
-		return (NULL);
-	}
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (6);
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

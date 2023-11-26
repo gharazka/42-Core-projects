@@ -6,7 +6,7 @@
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:02:53 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/24 19:13:17 by gharazka         ###   ########.fr       */
+/*   Updated: 2023/10/28 20:20:59 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		end_i;
 	int		j;
 	char	*result;
-	
+
 	start_i = start(s1, set);
 	end_i = end(s1, set);
 	if (start_i > end_i)
 	{
 		result = malloc(1);
+		result[0] = 0;
 		return (result);
 	}
 	result = (char *)malloc(sizeof(char) * (end_i - start_i + 2));

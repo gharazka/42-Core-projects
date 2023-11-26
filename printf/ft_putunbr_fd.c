@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_putunbr_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 20:22:29 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/28 20:22:30 by gharazka         ###   ########.fr       */
+/*   Created: 2023/11/16 20:44:09 by gharazka          #+#    #+#             */
+/*   Updated: 2023/11/16 20:44:27 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_putunbr_fd(unsigned int nb, int fd)
 {
-	if (lst == NULL)
+	if (nb > 9)
 	{
-		return (NULL);
+		ft_putunbr_fd(nb / 10, fd);
+		ft_putunbr_fd(nb % 10, fd);
 	}
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	if (nb <= 9)
+		ft_putchar_fd(nb + 48, fd);
 }

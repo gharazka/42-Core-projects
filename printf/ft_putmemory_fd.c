@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_putmemory_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 20:22:29 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/28 20:22:30 by gharazka         ###   ########.fr       */
+/*   Created: 2023/11/16 20:56:28 by gharazka          #+#    #+#             */
+/*   Updated: 2023/11/16 21:10:12 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_putmemory_fd(unsigned long long int n)
 {
-	if (lst == NULL)
+	int	len;
+
+	len = 0;
+	if (!n)
 	{
-		return (NULL);
+		ft_putstr_fd("(nil)", 1);
+		return (5);
 	}
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	ft_putstr_fd("0x", 1);
+	len += 2;
+	ft_puthex_fd(n, 0);
+	len += ft_hexlen(n, 0, 0);
+	return (len);
 }

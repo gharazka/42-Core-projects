@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_unumlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 20:22:29 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/28 20:22:30 by gharazka         ###   ########.fr       */
+/*   Created: 2023/11/16 20:42:43 by gharazka          #+#    #+#             */
+/*   Updated: 2023/11/16 20:42:44 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_unumlen(unsigned int n)
 {
-	if (lst == NULL)
+	int	i;
+
+	i = 0;
+	if (n == 0)
+		i++;
+	while (n != 0)
 	{
-		return (NULL);
+		i++;
+		n /= 10;
 	}
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	return (i);
 }

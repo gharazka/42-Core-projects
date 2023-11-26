@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_puthex_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gharazka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 20:22:29 by gharazka          #+#    #+#             */
-/*   Updated: 2023/10/28 20:22:30 by gharazka         ###   ########.fr       */
+/*   Created: 2023/11/16 20:47:17 by gharazka          #+#    #+#             */
+/*   Updated: 2023/11/16 20:47:36 by gharazka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_puthex_fd(unsigned long long int n, unsigned long int temp)
 {
-	if (lst == NULL)
+	while (n >= 16)
 	{
-		return (NULL);
+		temp = n / 16;
+		n = n - (16 * temp);
 	}
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	if (temp > 0)
+		ft_puthex_fd(temp, 0);
+	if (n <= 9)
+		ft_putnbr_fd(n, 1);
+	if (n > 9)
+		ft_putchar_fd(n + 'W', 1);
 }
